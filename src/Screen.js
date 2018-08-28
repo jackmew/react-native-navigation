@@ -24,11 +24,23 @@ class Navigator {
     this.navigatorEventHandlers = [];
     this.navigatorEventSubscription = null;
   }
-
+  _checkLastAction(params) {
+    if (Date.now() - this._lastAction.timestamp < 1000
+        && _.isEqual(params, this._lastAction.params)
+        && !params.force) {
+      return false;
+    } else {
+      this._lastAction = {params, timestamp: Date.now()};
+      return true;
+    }
+  }
   push(params = {}) {
+    // screenGroup -> quotation.QuotationScreen 同一個群組的，就不能連續push
+    if(!this._checkLastAction({method: 'push', passProps: params.passProps, screenGroup:  params.screen.split('.')[0] })) {
+      return;
+    }
     return NavigationSpecific.push(this, params);
   }
-
   pop(params = {}) {
     return NavigationSpecific.pop(this, params);
   }
