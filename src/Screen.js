@@ -27,7 +27,7 @@ class Navigator {
     this._lastAction = {params: undefined, timestamp: 0};
   }
   _checkLastAction(params) {
-    if (Date.now() - this._lastAction.timestamp < 1000
+    if (Date.now() - this._lastAction.timestamp < 1500
         && _.isEqual(params, this._lastAction.params)
         && !params.force) {
       return false;
@@ -38,7 +38,7 @@ class Navigator {
   }
   push(params = {}) {
     // screenGroup -> quotation.QuotationScreen 同一個群組的，就不能連續push
-    if(!this._checkLastAction({method: 'push', passProps: params.passProps, screenGroup:  params.screen.split('.')[0] })) {
+    if(!this._checkLastAction({method: 'push', screenGroup:  params.screen.split('.')[0] })) {
       return;
     }
     return NavigationSpecific.push(this, params);
@@ -56,6 +56,9 @@ class Navigator {
   }
 
   showModal(params = {}) {
+    if(!this._checkLastAction({method: 'showModal', screenGroup:  params.screen.split('.')[0] })) {
+      return;
+    }
     return Navigation.showModal(params);
   }
 
