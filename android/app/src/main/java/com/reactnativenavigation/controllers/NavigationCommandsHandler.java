@@ -42,6 +42,7 @@ public class NavigationCommandsHandler {
             @Override
             public void run() {
                 currentActivity.push(params, onPushComplete);
+                onPushComplete.resolve(true)
             }
         });
     }

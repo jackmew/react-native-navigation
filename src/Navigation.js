@@ -1,5 +1,5 @@
 /*eslint-disable*/
-//zest
+//zest2
 import React from 'react';
 import {AppRegistry} from 'react-native';
 import platformSpecific from './deprecated/platformSpecificDeprecated';

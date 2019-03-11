@@ -38,9 +38,9 @@ class Navigator {
   }
   push(params = {}) {
     // screenGroup -> quotation.QuotationScreen 同一個群組的，就不能連續push
-    if(!this._checkLastAction({method: 'push', screenGroup:  params.screen.split('.')[0] })) {
-      return;
-    }
+    // if(!this._checkLastAction({method: 'push', screenGroup:  params.screen.split('.')[0] })) {
+    //   return;
+    // }
     return NavigationSpecific.push(this, params);
   }
   pop(params = {}) {

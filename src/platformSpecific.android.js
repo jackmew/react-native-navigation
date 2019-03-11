@@ -10,9 +10,9 @@ async function startApp(activityParams) {
   return await NativeReactModule.startApp(activityParams);
 }
 
-function push(screenParams) {
+async function push(screenParams) {
   savePassProps(screenParams);
-  return NativeReactModule.push(screenParams);
+  return await NativeReactModule.push(screenParams);
 }
 
 function pop(screenParams) {

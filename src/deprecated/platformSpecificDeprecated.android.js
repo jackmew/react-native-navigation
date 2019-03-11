@@ -81,7 +81,7 @@ function adaptTopTabs(screen, navigatorID) {
   });
 }
 
-function navigatorPush(navigator, params) {
+async function navigatorPush(navigator, params) {
   addNavigatorParams(params, navigator);
   addNavigatorButtons(params);
   addTitleBarBackButtonIfNeeded(params);
@@ -101,7 +101,7 @@ function navigatorPush(navigator, params) {
     adapted.passProps.commandType = 'Push';
   }
 
-  return newPlatformSpecific.push(adapted);
+  return await newPlatformSpecific.push(adapted);
 }
 
 function navigatorPop(navigator, params) {
