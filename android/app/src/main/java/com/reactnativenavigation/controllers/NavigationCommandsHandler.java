@@ -64,7 +64,7 @@ public class NavigationCommandsHandler {
     public static void popToRoot(Bundle screenParams, final Promise promise) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
         if (currentActivity == null) {
-            promise.resolve(null)
+            promise.resolve(null);
         }
 
         final ScreenParams params = ScreenParamsParser.parse(screenParams);
@@ -72,7 +72,7 @@ public class NavigationCommandsHandler {
             @Override
             public void run() {
                 currentActivity.popToRoot(params);
-                promise.resolve(true)
+                promise.resolve(true);
             }
         });
     }
