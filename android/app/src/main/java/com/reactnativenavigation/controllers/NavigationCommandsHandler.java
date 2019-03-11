@@ -147,7 +147,7 @@ public class NavigationCommandsHandler {
         });
     }
 
-    public static void showModal(final Bundle params) {
+    public static void showModal(final Bundle params, final Promise promise) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
         if (currentActivity == null) {
             return;
@@ -157,6 +157,7 @@ public class NavigationCommandsHandler {
             @Override
             public void run() {
                 currentActivity.showModal(ScreenParamsParser.parse(params));
+                promise.resolve(true);
             }
         });
     }

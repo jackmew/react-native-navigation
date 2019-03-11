@@ -48,9 +48,9 @@ function setScreenButtons(screenInstanceID, navigatorEventID, rightButtons, left
   NativeReactModule.setScreenButtons(screenInstanceID, navigatorEventID, rightButtons, leftButton, fab);
 }
 
-function showModal(screenParams) {
+async function showModal(screenParams) {
   savePassProps(screenParams);
-  NativeReactModule.showModal(screenParams);
+  return await NativeReactModule.showModal(screenParams);
 }
 
 function showLightBox(params) {

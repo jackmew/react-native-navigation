@@ -505,7 +505,7 @@ function navigatorToggleTabs(navigator, params) {
   newPlatformSpecific.toggleBottomTabsVisible(visibility, animated);
 }
 
-function showModal(params) {
+async function showModal(params) {
   addNavigatorParams(params);
   addNavigatorButtons(params);
   addTitleBarBackButtonIfNeeded(params);
@@ -528,7 +528,7 @@ function showModal(params) {
     adapted.passProps.commandType = 'ShowModal';
   }
 
-  newPlatformSpecific.showModal(adapted);
+  return await newPlatformSpecific.showModal(adapted);
 }
 
 function showLightBox(params) {
@@ -554,8 +554,8 @@ function dismissLightBox() {
   newPlatformSpecific.dismissLightBox();
 }
 
-function dismissModal(params) {
-  newPlatformSpecific.dismissTopModal({
+async function dismissModal(params) {
+  return await newPlatformSpecific.dismissTopModal({
     ...params,
     navigationParams: {}
   });

@@ -198,8 +198,8 @@ public class NavigationReactModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void showModal(final ReadableMap params) {
-        NavigationCommandsHandler.showModal(BundleConverter.toBundle(params));
+    public void showModal(final ReadableMap params, Promise promise) {
+        NavigationCommandsHandler.showModal(BundleConverter.toBundle(params), promise);
     }
 
     @ReactMethod

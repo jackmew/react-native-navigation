@@ -1,4 +1,5 @@
 /*eslint-disable*/
+//zest
 import React from 'react';
 import {AppRegistry} from 'react-native';
 import platformSpecific from './deprecated/platformSpecificDeprecated';
@@ -99,16 +100,16 @@ function getRegisteredScreen(screenID) {
   return generator();
 }
 
-function showModal(params = {}) {
-  return platformSpecific.showModal(params);
+async function showModal(params = {}) {
+  return await platformSpecific.showModal(params);
 }
 
-function dismissModal(params = {}) {
-  return platformSpecific.dismissModal(params);
+async function dismissModal(params = {}) {
+  return await platformSpecific.dismissModal(params);
 }
 
-function dismissAllModals(params = {}) {
-  return platformSpecific.dismissAllModals(params);
+async function dismissAllModals(params = {}) {
+  return await platformSpecific.dismissAllModals(params);
 }
 
 function showSnackbar(params = {}) {
