@@ -19,8 +19,8 @@ function pop(screenParams) {
   NativeReactModule.pop(screenParams);
 }
 
-function popToRoot(screenParams) {
-  NativeReactModule.popToRoot(screenParams);
+async function popToRoot(screenParams) {
+  return await NativeReactModule.popToRoot(screenParams);
 }
 
 function newStack(screenParams) {
@@ -142,12 +142,12 @@ function selectTopTabByScreen(screenInstanceId) {
   NativeReactModule.selectTopTabByScreen(screenInstanceId);
 }
 
-function selectBottomTabByNavigatorId(navigatorId) {
-  NativeReactModule.selectBottomTabByNavigatorId(navigatorId);
+async function selectBottomTabByNavigatorId(navigatorId) {
+  return await NativeReactModule.selectBottomTabByNavigatorId(navigatorId);
 }
 
-function selectBottomTabByTabIndex(index) {
-  NativeReactModule.selectBottomTabByTabIndex(index);
+async function selectBottomTabByTabIndex(index) {
+  return await NativeReactModule.selectBottomTabByTabIndex(index);
 }
 
 function setBottomTabBadgeByIndex(index, badge) {

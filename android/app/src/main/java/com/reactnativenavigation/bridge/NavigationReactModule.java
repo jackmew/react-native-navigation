@@ -125,13 +125,13 @@ public class NavigationReactModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void selectBottomTabByTabIndex(Integer index) {
-        NavigationCommandsHandler.selectBottomTabByTabIndex(index);
+    public void selectBottomTabByTabIndex(Integer index, Promise promise) {
+        NavigationCommandsHandler.selectBottomTabByTabIndex(index, promise);
     }
 
     @ReactMethod
-    public void selectBottomTabByNavigatorId(String navigatorId) {
-        NavigationCommandsHandler.selectBottomTabByNavigatorId(navigatorId);
+    public void selectBottomTabByNavigatorId(String navigatorId, Promise promise) {
+        NavigationCommandsHandler.selectBottomTabByNavigatorId(navigatorId, promise);
     }
 
     @ReactMethod
@@ -188,8 +188,8 @@ public class NavigationReactModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void popToRoot(final ReadableMap params) {
-        NavigationCommandsHandler.popToRoot(BundleConverter.toBundle(params));
+    public void popToRoot(final ReadableMap params, Promise promise) {
+        NavigationCommandsHandler.popToRoot(BundleConverter.toBundle(params, promise));
     }
 
     @ReactMethod

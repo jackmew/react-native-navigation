@@ -42,7 +42,6 @@ public class NavigationCommandsHandler {
             @Override
             public void run() {
                 currentActivity.push(params, onPushComplete);
-                onPushComplete.resolve(true)
             }
         });
     }
@@ -62,10 +61,10 @@ public class NavigationCommandsHandler {
         });
     }
 
-    public static void popToRoot(Bundle screenParams) {
+    public static void popToRoot(Bundle screenParams, final Promise promise) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
         if (currentActivity == null) {
-            return;
+            promise.resolve(null)
         }
 
         final ScreenParams params = ScreenParamsParser.parse(screenParams);
@@ -73,6 +72,7 @@ public class NavigationCommandsHandler {
             @Override
             public void run() {
                 currentActivity.popToRoot(params);
+                promise.resolve(true)
             }
         });
     }
@@ -348,33 +348,36 @@ public class NavigationCommandsHandler {
         });
     }
 
-    public static void selectBottomTabByTabIndex(final Integer index) {
+    public static void selectBottomTabByTabIndex(final Integer index, final Promise promise) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
         if (currentActivity == null) {
-            return;
+            promise.resolve(null);
         }
 
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
                 currentActivity.selectBottomTabByTabIndex(index);
+                promise.resolve(true);
             }
         });
     }
 
-    public static void selectBottomTabByNavigatorId(final String navigatorId) {
+    public static void selectBottomTabByNavigatorId(final String navigatorId, final Promise promise) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
         if (currentActivity == null) {
-            return;
+            promise.resolve(null);
         }
 
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
                 currentActivity.selectBottomTabByNavigatorId(navigatorId);
+                promise.resolve(true);
             }
         });
     }
+
 
     public static void setBottomTabBadgeByIndex(final Integer index, final String badge) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;

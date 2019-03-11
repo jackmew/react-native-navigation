@@ -115,7 +115,7 @@ function navigatorPop(navigator, params) {
   newPlatformSpecific.pop(adapted);
 }
 
-function navigatorPopToRoot(navigator, params) {
+async function navigatorPopToRoot(navigator, params) {
   addNavigatorParams(params, navigator);
 
   params.screenId = params.screen;
@@ -123,7 +123,7 @@ function navigatorPopToRoot(navigator, params) {
   adapted = adaptNavigationParams(adapted);
   adapted.timestamp = Date.now();
 
-  newPlatformSpecific.popToRoot(adapted);
+  return await newPlatformSpecific.popToRoot(adapted);
 }
 
 function navigatorResetTo(navigator, params) {
@@ -457,11 +457,11 @@ function navigatorSetStyle(navigator, params) {
   newPlatformSpecific.setScreenStyle(navigator.screenInstanceID, style);
 }
 
-function navigatorSwitchToTab(navigator, params) {
+async function navigatorSwitchToTab(navigator, params) {
   if (params.tabIndex >= 0) {
-    newPlatformSpecific.selectBottomTabByTabIndex(params.tabIndex);
+    return await newPlatformSpecific.selectBottomTabByTabIndex(params.tabIndex);
   } else {
-    newPlatformSpecific.selectBottomTabByNavigatorId(navigator.navigatorID);
+    return await newPlatformSpecific.selectBottomTabByNavigatorId(navigator.navigatorID);
   }
 }
 
