@@ -51,8 +51,8 @@ dependencies {
     compile "com.android.support:appcompat-v7:25.3.1"
 
     // node_modules
-    // compile "com.facebook.react:react-native:+"
-      compile project(':ReactAndroid')
+     compile "com.facebook.react:react-native:+"
+//      compile project(':ReactAndroid')
 
     // third party
     compile "com.aurelhubert:ahbottomnavigation:2.0.6"
