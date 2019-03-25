@@ -63,12 +63,15 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
     @Nullable
     private PermissionListener mPermissionListener;
 
+    boolean killedBySystem = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!NavigationApplication.instance.getReactGateway().hasStartedCreatingContext() ||
                 getIntent() == null ||
                 getIntent().getBundleExtra("ACTIVITY_PARAMS_BUNDLE") == null) {
+            killedBySystem = true;
             SplashActivity.start(this);
             finish();
             return;
@@ -196,6 +199,10 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
     }
 
     private void destroyJsIfNeeded() {
+        if ( killedBySystem ) {
+            return;
+        }
+
         if (currentActivity == null || currentActivity.isFinishing()) {
             getReactGateway().onDestroyApp(this);
         }
@@ -244,6 +251,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
     }
 
     void push(ScreenParams params, Promise onPushComplete) {
+//        throw new RuntimeException("Zest Test Native Exception");
         if (modalController.containsNavigator(params.getNavigatorId())) {
             modalController.push(params, onPushComplete);
         } else {
